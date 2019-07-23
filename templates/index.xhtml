@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML>
+<!-- This page was done with a theme from https://themes.getbootstrap.com/. See: https://themes.getbootstrap.com/licenses/ -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+
+        <title>Microfrontends Test</title>
+        <meta name="description" content="Microfrontends Test" />
+        <meta name="author" content="Mariano Custiel" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="/main.css" />
+    </head>
+
+    <body>
+	    <header>
+	    	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	    		<ul class="mr-auto navbar-nav">
+	    			<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+	    			<li class="nav-item"><a class="nav-link" href="/bad-request">Execute a bad request in the catalog</a></li>
+	    			<li class="nav-item"><a class="nav-link" href="/not-found">Catalog page not found</a></li>
+	    			<li class="nav-item"><a class="nav-link" href="/fail">Error in the catalog</a></li>
+	    		</ul>
+		       <section id="login-header"></section>
+			</nav>
+    	
+	    	<div class="jumbotron">
+				<div class="container text-center">
+					<h1>My Online Store</h1>      
+					<p>Mission, Vission &amp; Values</p>
+				</div>
+			</div>
+    	</header>
+		
+    	<main role="main" class="container">
+	    	<section id="errors"></section>
+    		<section id="catalog-search"></section>
+    		<section id="catalog-list">THIS IS DEFAULT CONTENT SHOWN ONLY IN CASE OF ERROR</section>
+    		<section id="login-form"></section>
+    	</main>
+    	
+    	<footer class="container-fluid text-center">
+			<p>Online Store Copyright</p>  
+			<form class="form-inline">Get deals:
+				<input type="email" class="form-control" size="50" placeholder="Email Address" />
+				<button type="button" class="btn btn-danger">Sign Up</button>
+			</form>
+    	</footer>
+    	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>

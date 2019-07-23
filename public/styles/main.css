@@ -1,0 +1,12 @@
+#error {
+	padding-top: 15px;
+}
+
+main {
+	min-height: 500px;
+}
+
+footer {
+	background-color: #f2f2f2;
+	padding: 25px;
+}

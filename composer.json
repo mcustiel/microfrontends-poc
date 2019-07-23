@@ -1,0 +1,24 @@
+{
+	"keywords" : [
+		"microfrontends",
+		"composer"
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Mcustiel\\MicrofrontendsComposer\\" : "src"
+		}
+	},
+	"name" : "mcustiel/test-microfrontends-php",
+	"type" : "project",
+	"description" : "Microfronteds composer in php",
+	"license" : "GPL-3.0+",
+	"require" : {
+		"php" : ">=7.2",
+		"ext-dom": "*",
+	    "templado/engine": "^3.0",
+	    "guzzlehttp/guzzle": "^6.0",
+	    "zendframework/zend-diactoros": "^2.1",
+	    "zendframework/zend-httphandlerrunner": "^1.1",
+	    "symfony/cache": "^4.3.2"
+	}
+}
