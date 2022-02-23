@@ -15,8 +15,6 @@ services:
   main-app:
     build: 
       context: ./docker/config/php
-      args: 
-        - ARG DEBUG_IDEKEY=XDEBUG_ECLIPSE
     image: mcustiel_microfrontends_main_app_image
     container_name: mcustiel_microfrontends_main_app
     volumes:

@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:8.0-fpm
 
 RUN apt-get update && apt-get -y install git gzip wget zlib1g-dev zip bzip2 libbz2-dev libmcrypt-dev sqlite3 libsqlite3-dev libzip-dev
 RUN docker-php-ext-install zip bz2 pdo_sqlite

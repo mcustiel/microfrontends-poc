@@ -32,12 +32,10 @@ class Application
         $servers = new ServiceDataCollection();
 
         $service = new Microservice(new ServiceId('login'), new Uri('http://login-web-server'));
-        $request = RequestModifier::getRequestForService($request, $service);
-        $servers->add(new ServiceExecutionData($service, $request));
+        $servers->add(new ServiceExecutionData($service, RequestModifier::getRequestForService($request, $service)));
 
         $service = new Microservice(new ServiceId('catalog'), new Uri('http://catalog-web-server'));
-        $request = RequestModifier::getRequestForService($request, $service);
-        $servers->add(new ServiceExecutionData($service, $request));
+        $servers->add(new ServiceExecutionData($service, RequestModifier::getRequestForService($request, $service)));
 
         return $servers;
     }
