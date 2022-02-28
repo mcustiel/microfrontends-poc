@@ -6,16 +6,19 @@ namespace Mcustiel\MicrofrontendsComposer;
 
 use Mcustiel\MicrofrontendsComposer\Collections\ServiceDataCollection;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\DependencyInjection\Container;
 use Zend\Diactoros\Uri;
 
 class Application
 {
-    /** @var Factory */
-    private $factory;
+    private Factory $factory;
+
+    private Container $container;
 
     public function __construct(Factory $factory)
     {
         $this->factory = $factory;
+        $this->container = $this->factory->createContainer();
     }
 
     public function main(): void
@@ -29,14 +32,16 @@ class Application
 
     private function getProxiesData(ServerRequestInterface $request): ServiceDataCollection
     {
-        $servers = new ServiceDataCollection();
+        $serverCollection = new ServiceDataCollection();
+        $servers = $this->container->getParameter('servers');
 
-        $service = new Microservice(new ServiceId('login'), new Uri('http://login-web-server'));
-        $servers->add(new ServiceExecutionData($service, RequestModifier::getRequestForService($request, $service)));
+        foreach ($servers as $id => $url) {
+            $service = new Microservice(new ServiceId($id), new Uri($url));
+            $serverCollection->add(
+                new ServiceExecutionData($service, RequestModifier::getRequestForService($request, $service))
+            );
+        }
 
-        $service = new Microservice(new ServiceId('catalog'), new Uri('http://catalog-web-server'));
-        $servers->add(new ServiceExecutionData($service, RequestModifier::getRequestForService($request, $service)));
-
-        return $servers;
+        return $serverCollection;
     }
 }

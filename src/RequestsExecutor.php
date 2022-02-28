@@ -7,6 +7,7 @@ namespace Mcustiel\MicrofrontendsComposer;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Pool;
+use Iterator;
 use Mcustiel\MicrofrontendsComposer\Collections\ServiceDataCollection;
 use Mcustiel\MicrofrontendsComposer\Processors\ResponsesComposer;
 use Psr\Http\Message\ResponseInterface;
@@ -79,9 +80,9 @@ class RequestsExecutor
         };
     }
 
-    private function generateRequests(ServiceDataCollection $proxyData): \Iterator
+    private function generateRequests(ServiceDataCollection $proxyData): Iterator
     {
-        /* @var \Mcustiel\MicrofrontendsComposer\ServiceExecutionData $proxyData */
+        /* @var ServiceExecutionData $proxyData */
         foreach ($proxyData as $proxiedService) {
             yield $proxiedService->getRequest();
         }

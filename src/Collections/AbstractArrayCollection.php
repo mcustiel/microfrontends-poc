@@ -7,6 +7,8 @@ namespace Mcustiel\MicrofrontendsComposer\Collections;
 use Countable;
 use Iterator;
 
+use function count;
+
 abstract class AbstractArrayCollection implements Iterator, Countable
 {
     /** @var array */
@@ -49,6 +51,6 @@ abstract class AbstractArrayCollection implements Iterator, Countable
 
     public function count(): int
     {
-        return \count($this->data);
+        return count($this->data);
     }
 }

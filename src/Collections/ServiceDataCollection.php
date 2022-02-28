@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mcustiel\MicrofrontendsComposer\Collections;
 
 use Mcustiel\MicrofrontendsComposer\ServiceExecutionData;
+use OutOfBoundsException;
 
 class ServiceDataCollection extends AbstractMap
 {
@@ -19,7 +20,7 @@ class ServiceDataCollection extends AbstractMap
     public function replace(int $index, ServiceExecutionData $data): void
     {
         if (!parent::hasKey($index)) {
-            throw new \OutOfBoundsException('Out of bounds');
+            throw new OutOfBoundsException('Out of bounds');
         }
         parent::setValue($index, $data);
     }

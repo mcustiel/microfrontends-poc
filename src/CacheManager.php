@@ -14,7 +14,7 @@ class CacheManager
         $this->cache = $cache;
     }
 
-    public function isCached(string $serviceId, string $urlPath)
+    public function isCached(string $serviceId, string $urlPath): bool
     {
         return $this->cache->hasItem($this->buildKey($serviceId, $urlPath));
     }

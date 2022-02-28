@@ -13,12 +13,15 @@
 	"description" : "Microfronteds composer in php",
 	"license" : "GPL-3.0+",
 	"require" : {
-		"php" : ">=7.2",
+		"php" : ">=7.4",
 		"ext-dom": "*",
 	    "templado/engine": "^3.0",
 	    "guzzlehttp/guzzle": "^6.0",
 	    "zendframework/zend-diactoros": "^2.1",
 	    "zendframework/zend-httphandlerrunner": "^1.1",
-	    "symfony/cache": "^4.3.2"
+	    "symfony/cache": "^4.3.2",
+		"symfony/dependency-injection": "^5.4",
+		"symfony/config": "^5.4",
+		"symfony/yaml": "^5.4"
 	}
 }

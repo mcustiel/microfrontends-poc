@@ -7,6 +7,8 @@ namespace Mcustiel\MicrofrontendsComposer\Processors;
 use Mcustiel\MicrofrontendsComposer\ServiceExecutionData;
 use Psr\Http\Message\ResponseInterface;
 
+use function in_array;
+
 final class CopyResponseHeaderPostprocessor
 {
     const IGNORED_HEADERS = [
@@ -18,7 +20,7 @@ final class CopyResponseHeaderPostprocessor
     public function process(ServiceExecutionData $serviceExecutionData, ResponseInterface $response): ResponseInterface
     {
         foreach ($serviceExecutionData->getResponse()->getHeaders() as $name => $value) {
-            if (\in_array($name, self::IGNORED_HEADERS, true)) {
+            if (in_array($name, self::IGNORED_HEADERS, true)) {
                 continue;
             }
             $response = $response->withHeader($name, $value);

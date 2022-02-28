@@ -6,6 +6,7 @@ namespace Mcustiel\MicrofrontendsComposer;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use RuntimeException;
 
 class ServiceExecutionData
 {
@@ -35,7 +36,7 @@ class ServiceExecutionData
     public function getResponse(): ResponseInterface
     {
         if ($this->response === null) {
-            throw new \RuntimeException('Trying to access a null value');
+            throw new RuntimeException('Trying to access a null value');
         }
 
         return $this->response;

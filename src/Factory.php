@@ -12,6 +12,10 @@ use Mcustiel\MicrofrontendsComposer\Processors\ResponsesComposer;
 use Mcustiel\MicrofrontendsComposer\Processors\SetCookieResponseHeaderProcessor;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\ApcuAdapter;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Zend\HttpHandlerRunner\Emitter\EmitterInterface;
 use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
 
@@ -94,5 +98,14 @@ class Factory
     public function createResponseEmitter(): EmitterInterface
     {
         return new SapiEmitter();
+    }
+
+    public function createContainer(): Container
+    {
+        $containerBuilder = new ContainerBuilder();
+        $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__ . '/../config'));
+        $loader->load('services.yml');
+        $containerBuilder->compile();
+        return $containerBuilder;
     }
 }

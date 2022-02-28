@@ -36,6 +36,7 @@ header('X-Custom-Test: Potato');
         <link rel="stylesheet" type="text/css" href="/catalog/styles/main.css" />
     </head>
     <body>
+
         <section id="catalog-list">
         <div class="container">
             <div class="row">
@@ -73,6 +74,10 @@ header('X-Custom-Test: Potato');
         		<label for="catalog-search-field">Search in the catalog:</label>
         		<input type="text" id="catalog-search-field" name="search_term" />
         	</form>
+        </section>
+
+        <section id="analytics">
+            something
         </section>
     </body>
 </html>

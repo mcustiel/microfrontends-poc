@@ -19,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?><html>
 <body>
-    <section id="login-header">
+<section id="login-header">
+    <section id="analytics"></section>
     <?php if (isset($_SESSION['user'])) : ?>
     <ul class="nav navbar-nav navbar-right">
 	    <li class="nav-item"><a class="nav-link" href="#"><span class="glyphicon glyphicon-user"></span> Hello <?= $_SESSION['user']['name']; ?>, Your Account</a></li>
