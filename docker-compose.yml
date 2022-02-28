@@ -54,12 +54,12 @@ services:
       - sports_microfrontends_app_internal
 
   header-server:
-    image: nginx:latest
+    build: ./docker/config/nginx/header
     container_name: sports_microfrontends_header_webserver
     ports:
       - 8003:80
     volumes:
-      - ./applications/app-header:/usr/share/nginx/html/
+      - ./applications/app-header:/var/www/html
     networks:
       - sports_microfrontends_app_internal
 

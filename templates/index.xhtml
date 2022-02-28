@@ -40,56 +40,15 @@
 			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 			crossorigin="anonymous"></script>
 	<script src="https://skysports.com/js/vendor/require.2.3.2.min.js"></script>
-	<script>requirejs.config({
-		"baseUrl": "https://skysports.com/", "paths": {
-			"site-main": "js/min/site-main-8225f3e3231d3b95004e157ec65757aa",
-			"omniture": "js/min/omniture-d90d89440925cfe3d488de910c6c9fe6",
-			"component-loader": "js/min/component-loader-b1be6d2d880b371a6ef7d6dcdcde98c6",
-			"blackjack-sdc-digrev-header": "js/min/blackjack-sdc-digrev-header-aac6902e9f020bebb1b7cf31dfbeefcc",
-			"blackjack-sdc-digrev-footer": "js/min/blackjack-sdc-digrev-footer-a5173e7239e2b8007ed615363fe8f59f",
-			"sdc-site-pundits": "js/min/sdc-site-pundits-2c64698974888b10618461f4799674ad",
-			"sdc-site-breaking-news": "js/min/sdc-site-breaking-news-e2dc196d05fb7fc901bbc4b4c104e844",
-			"sdc-site-mpu": "js/min/sdc-site-mpu-f2e31a5cf5cc98bb5662f4d9dde95fa5",
-			"sdc-site-localnav": "js/min/sdc-site-localnav-0bf57025c5275361f9cfe2587a11c020",
-			"sdc-site-open-tracing": "js/min/sdc-site-open-tracing-179b59b6db270bef94b8a2a88efa0a15",
-			"sdc-site-outbrain": "js/min/sdc-site-outbrain-c21f077e1752e253623441c7a4e57266",
-			"sdc-site-pub-sub": "js/min/sdc-site-pub-sub-b5d327f46cac2ae028cd0ffd103ae20c",
-			"sdc-article-image-grid": "js/min/sdc-article-image-grid-15b681f802192d62a3347058d9cff7a4",
-			"sdc-article-gallery": "js/min/sdc-article-gallery-479948fd96578afe6efedf996c36e133",
-			"sdc-site-load-more": "js/min/sdc-site-load-more-67ffe4660d14c6b39ff409965d1faaa7",
-			"sdc-dynamic-tile": "js/min/sdc-dynamic-tile-387c394dd4ff37374411148b6322e601",
-			"sdc-site-promo-panel": "js/min/sdc-site-promo-panel-f531e6c65df908201c42d49dcde81eb4",
-			"sdc-site-login-panel": "js/min/sdc-site-login-panel-fbcdf380ca9ec32137da62ec9b47b494",
-			"sdc-site-iframe": "js/min/sdc-site-iframe-fe8d4a1ce6004ea1df600b1f331d6660",
-			"sdc-article-liveblog": "js/min/sdc-article-liveblog-fb86d9bd4e20c7911e1381fdd1c3ad62",
-			"sdc-site-charts": "js/min/sdc-site-charts-06857fb4fce2cb39d73e28a3fe5cb016",
-			"sdc-site-carousel": "js/min/sdc-site-carousel-c18b2b622631f33b37a68621c484ce60",
-			"sdc-site-racing-card": "js/min/sdc-site-racing-card-c64e559025415551c615435a9fbad262",
-			"sdc-site-concertina-block": "js/min/sdc-site-concertina-block-ae42fc9cb6d113a1bbe13d1ef718e1de",
-			"sdc-site-racing-meetings": "js/min/sdc-site-racing-meetings-53f09d23094a50b3d00257da8ced798c",
-			"sdc-site-select-nav": "js/min/sdc-site-select-nav-c3c0a857a3828fc0e3c5090f1f8ec708",
-			"sdc-interactive-super6": "js/min/sdc-interactive-super6-a69309f1ed662a57917c2e660ab03e55",
-			"sdc-site-racing-header": "js/min/sdc-site-racing-header-95fdd93c80f7d165f77b66eabdd449d6",
-			"sdc-site-racing-status": "js/min/sdc-site-racing-status-aecdc8c46cc8329040b7befeafcf1772",
-			"sdc-site-simple-text": "js/min/sdc-site-simple-text-8612e119de0b6568ce2016034d0fd1e2",
-			"sdc-site-calendar": "js/min/sdc-site-calendar-b2601ddba9972b8cd4aaa8c057633915",
-			"sdc-site-consent-management": "js/min/sdc-site-consent-management-adfaef25ae2963a9dff5398f7380df25",
-			"sdc-site-scrolling-table": "js/min/sdc-site-scrolling-table-22e97ffdbab4683a01878ead148a63eb",
-			"sdc-base-element-filter": "js/min/sdc-base-element-filter-ae1b2737bb0dfa75e1b63aad77198cbc",
-			"sdc-site-layout": "js/min/sdc-site-layout-f77dc5ab77a216aa33c88249a77ed066",
-			"sdc-site-match-header": "js/min/sdc-site-match-header-548fd0c99a06a1fffa8ee40e5f38cb3b",
-			"sdc-site-filter-nav": "js/min/sdc-site-filter-nav-9c5af1f9e6bfabde38f9274f3ef9fcbf",
-			"sdc-site-hero": "js/min/sdc-site-hero-03f66bd89698af09f5c64b0ff6550e96",
-			"sdc-site-video": "js/min/sdc-site-video-6c33230082d7d9d098aa05816353bba6",
-			"sdc-site-opta-widget": "js/min/sdc-site-opta-widget-ac9bbe96a7bb91ca2f4b2e8730840af1",
-			"sdc-article-livetext": "js/min/sdc-article-livetext-e28e75c40cbf53810a951ccf5b92c5ec",
-			"sdc-interactive-selector": "js/min/sdc-interactive-selector-950921a0a565ce520276bee1682a4b2d",
-			"ui-cricket-match-header": "js/min/ui-cricket-match-header-18a1ed5ef8664347e6670373f5dafb82",
-			"ui-incrowd-poll-widget": "js/min/ui-incrowd-poll-widget-a98be2b0f649ec8b1bb0a843be1dd2be",
-			"ui-liveblog": "js/min/ui-liveblog-5cf721811e82e99ff15018c073c12af0",
-			"sdc-site-table": "js/min/sdc-site-table-266483119418bd79584081fb74f3ee25"
-		}
-	});</script>
+	<script>
+		requirejs.config({
+			"baseUrl": "/", "paths": {
+				"site-main": "/header/script",
+				"component-loader": "https://skysports.com/js/min/component-loader-b1be6d2d880b371a6ef7d6dcdcde98c6",
+				"blackjack-sdc-digrev-header": "https://skysports.com/js/min/blackjack-sdc-digrev-header-aac6902e9f020bebb1b7cf31dfbeefcc"
+			}
+		});
+	</script>
 
 	<script>
 		requirejs(['site-main'], function (page) {
