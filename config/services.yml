@@ -1,6 +1,7 @@
 parameters:
     servers:
-        login: 'http://login-web-server'
-        catalog: 'http://catalog-web-server'
+        header: 'http://header-server'
+#        login: 'http://login-web-server'
+#        catalog: 'http://catalog-web-server'
 
 services:

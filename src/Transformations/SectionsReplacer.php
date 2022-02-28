@@ -23,10 +23,12 @@ class SectionsReplacer implements Transformation
     public function apply(DOMNode $htmlSection): void
     {
         $microFrontendSections = $this->xpath->query('//section');
-
         foreach ($microFrontendSections as $section) {
             if ($this->sectionsHaveSameId($htmlSection, $section)) {
                 $node = $htmlSection->ownerDocument->importNode($section, true);
+
+                //var_dump($htmlSection->ownerDocument->saveHTML($htmlSection));
+                //var_dump($node->ownerDocument->saveHTML($node));
                 $htmlSection->parentNode->replaceChild($node, $htmlSection);
             }
         }

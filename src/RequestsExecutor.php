@@ -55,8 +55,7 @@ class RequestsExecutor
 
     private function createSuccessHandler(ServiceDataCollection $servers): callable
     {
-        return function (ResponseInterface $serviceResponse, int $index) use ($servers) {
-            /* @var ServiceDataCollection $servers */
+        return static function (ResponseInterface $serviceResponse, int $index) use ($servers) {
             $servers->get($index)->setResponse($serviceResponse);
         };
     }

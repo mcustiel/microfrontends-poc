@@ -14,7 +14,7 @@ final class CopyResponseHeaderPostprocessor
     const IGNORED_HEADERS = [
         'Server', 'Date', 'Content-Type', 'Transfer-Encoding',
         'Connection', 'X-Powered-By', 'Expires', 'Pragma',
-        'Cache-Control', 'Set-Cookie',
+        'Cache-Control', 'Set-Cookie', 'Content-Length'
     ];
 
     public function process(ServiceExecutionData $serviceExecutionData, ResponseInterface $response): ResponseInterface

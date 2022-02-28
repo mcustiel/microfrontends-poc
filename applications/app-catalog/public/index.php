@@ -33,7 +33,7 @@ header('X-Custom-Test: Potato');
 ?>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/catalog/styles/main.css" />
+<!--        <link rel="stylesheet" type="text/css" href="/catalog/styles/main.css" />-->
     </head>
     <body>
 
