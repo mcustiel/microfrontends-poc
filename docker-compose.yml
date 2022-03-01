@@ -63,6 +63,16 @@ services:
     networks:
       - sports_microfrontends_app_internal
 
+  footer-server:
+    build: ./docker/config/nginx/header
+    container_name: sports_microfrontends_footer_webserver
+    ports:
+      - 8004:80
+    volumes:
+      - ./applications/app-footer:/var/www/html
+    networks:
+      - sports_microfrontends_app_internal
+
 
   catalog-app:
     build: ./docker/config/php
