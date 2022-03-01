@@ -4,32 +4,27 @@ declare(strict_types=1);
 
 namespace Mcustiel\MicrofrontendsComposer\Transformations;
 
+use DOMElement;
 use DOMNode;
-use DOMXPath;
 use Templado\Engine\Selector;
-use Templado\Engine\Transformation;
 use Templado\Engine\XPathSelector;
 
-class SectionsReplacer implements Transformation
+class SectionsReplacer extends AbstractBaseTransformation
 {
-    /** @var DOMXPath */
-    private $xpath;
 
-    public function __construct(DOMXpath $xpath)
-    {
-        $this->xpath = $xpath;
-    }
-
-    public function apply(DOMNode $htmlSection): void
+    public function apply(DOMNode $context): void
     {
         $microFrontendSections = $this->xpath->query('//section');
         foreach ($microFrontendSections as $section) {
-            if ($this->sectionsHaveSameId($htmlSection, $section)) {
-                $node = $htmlSection->ownerDocument->importNode($section, true);
+            if ($this->sectionsHaveSameId($context, $section)) {
+                /** @var DOMElement $section */
+                $images = $section->getElementsByTagName('img');
+                foreach ($images as $img) {
+                    $this->replaceAttribute($img, 'src');
+                }
 
-                //var_dump($htmlSection->ownerDocument->saveHTML($htmlSection));
-                //var_dump($node->ownerDocument->saveHTML($node));
-                $htmlSection->parentNode->replaceChild($node, $htmlSection);
+                $node = $context->ownerDocument->importNode($section, true);
+                $context->parentNode->replaceChild($node, $context);
             }
         }
     }
@@ -45,6 +40,6 @@ class SectionsReplacer implements Transformation
             && $section->attributes->getNamedItem('id') !== null
             && $htmlSection->attributes->getNamedItem('id') !== null
             && $section->attributes->getNamedItem('id')->nodeValue
-                === $htmlSection->attributes->getNamedItem('id')->nodeValue;
+            === $htmlSection->attributes->getNamedItem('id')->nodeValue;
     }
 }

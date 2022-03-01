@@ -1,8 +1,16 @@
 parameters:
     servers:
-        header: 'http://header-server'
-        footer: 'http://footer-server'
-        login: 'http://login-web-server'
-        catalog: 'http://catalog-web-server'
+        header:
+            url: 'http://header-server'
+            assetsPrefix: header
+        footer:
+            url: 'http://footer-server'
+            assetsPrefix: footer
+        login:
+            url: 'http://login-web-server'
+            assetsPrefix: login
+        catalog:
+            url: 'http://catalog-web-server'
+            assetsPrefix: catalog
 
 services:

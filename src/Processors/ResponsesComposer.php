@@ -6,18 +6,15 @@ use Mcustiel\MicrofrontendsComposer\Collections\ServiceDataCollection;
 use Mcustiel\MicrofrontendsComposer\HtmlTemplateLoader;
 use Mcustiel\MicrofrontendsComposer\StringStream;
 use Psr\Http\Message\ResponseInterface;
-use Zend\Diactoros\Response;
+use Laminas\Diactoros\Response;
 
 class ResponsesComposer
 {
-    /** @var HeadersComposer */
-    private $headersComposer;
+    private HeadersComposer $headersComposer;
 
-    /** @var BodyComposer */
-    private $bodyComposer;
+    private BodyComposer $bodyComposer;
 
-    /** @var HtmlTemplateLoader */
-    private $templateLoader;
+    private HtmlTemplateLoader $templateLoader;
 
     public function __construct(
         BodyComposer $bodyComposer,

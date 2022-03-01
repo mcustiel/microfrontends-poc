@@ -3,7 +3,7 @@
 namespace Mcustiel\MicrofrontendsComposer;
 
 use Mcustiel\MicrofrontendsComposer\Collections\ServiceDataCollection;
-use Zend\Diactoros\Response;
+use Laminas\Diactoros\Response;
 
 class RequestsPreprocessor
 {

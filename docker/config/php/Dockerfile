@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.1-fpm
 
 RUN apt-get update && apt-get -y install git gzip wget zlib1g-dev zip bzip2 libbz2-dev libmcrypt-dev sqlite3 libsqlite3-dev libzip-dev
 RUN docker-php-ext-install zip bz2 pdo_sqlite
@@ -14,7 +14,7 @@ RUN EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)
 
 RUN chmod +x /usr/local/bin/composer
 
-RUN pecl install apcu-5.1.17 \
+RUN pecl install apcu-5.1.21 \
 	&& docker-php-ext-enable apcu
 
 ENV XDEBUG_PORT 9000

@@ -3,86 +3,72 @@ version: "3"
 services:
   web:
     build: ./docker/config/nginx/main
-    image: sports_microfrontends_webserver_image
-    container_name: sports_microfrontends_webserver
     ports:
       - 80:80
     volumes:
       - .:/var/www/html
     networks:
-      - sports_microfrontends_app_internal
+      - internal
 
   main-app:
     build: 
       context: ./docker/config/php
-    image: sports_microfrontends_main_app_image
-    container_name: sports_microfrontends_main_app
     volumes:
       - .:/var/www/html
     networks:
-      - sports_microfrontends_app_internal
+      - internal
 
   login-web-server:
     build: ./docker/config/nginx/login
-    image: sports_microfrontends_login_webserver_image
-    container_name: sports_microfrontends_login_webserver
     ports:
       - 8001:80
     volumes:
       - ./applications/app-login:/var/www/html
     networks:
-      - sports_microfrontends_app_internal
+      - internal
 
   login-app:
     build: ./docker/config/php
-    image: sports_microfrontends_login_app_image
-    container_name: sports_microfrontends_login_app
     volumes:
       - ./applications/app-login:/var/www/html
     networks:
-      - sports_microfrontends_app_internal
+      - internal
 
   catalog-web-server:
     build: ./docker/config/nginx/catalog
-    image: sports_microfrontends_catalog_webserver_image
-    container_name: sports_microfrontends_catalog_webserver
     ports:
       - 8002:80
     volumes:
       - ./applications/app-catalog:/var/www/html
     networks:
-      - sports_microfrontends_app_internal
+      - internal
 
   header-server:
     build: ./docker/config/nginx/header
-    container_name: sports_microfrontends_header_webserver
     ports:
       - 8003:80
     volumes:
       - ./applications/app-header:/var/www/html
     networks:
-      - sports_microfrontends_app_internal
+      - internal
 
   footer-server:
     build: ./docker/config/nginx/header
-    container_name: sports_microfrontends_footer_webserver
     ports:
       - 8004:80
     volumes:
       - ./applications/app-footer:/var/www/html
     networks:
-      - sports_microfrontends_app_internal
+      - internal
 
 
   catalog-app:
     build: ./docker/config/php
-    image: sports_microfrontends_catalog_app_image
-    container_name: sports_microfrontends_catalog_app
     volumes:
       - ./applications/app-catalog:/var/www/html
     networks:
-      - sports_microfrontends_app_internal
+      - internal
 
 networks:
-  sports_microfrontends_app_internal:
+  internal:
     driver: bridge

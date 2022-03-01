@@ -11,20 +11,17 @@ use Iterator;
 use Mcustiel\MicrofrontendsComposer\Collections\ServiceDataCollection;
 use Mcustiel\MicrofrontendsComposer\Processors\ResponsesComposer;
 use Psr\Http\Message\ResponseInterface;
-use Zend\Diactoros\Response;
+use Laminas\Diactoros\Response;
 
 class RequestsExecutor
 {
-    const CONCURRENT_REQUESTS_AMOUNT = 3;
+    public const CONCURRENT_REQUESTS_AMOUNT = 3;
 
-    /** @var ClientInterface */
-    private $client;
+    private ClientInterface $client;
 
-    /** @var RequestsPreprocessor */
-    private $requestsPreprocessor;
+    private RequestsPreprocessor $requestsPreprocessor;
 
-    /** @var ResponsesComposer */
-    private $responsesComposer;
+    private ResponsesComposer $responsesComposer;
 
     public function __construct(
         ClientInterface $httpClient,
@@ -81,7 +78,6 @@ class RequestsExecutor
 
     private function generateRequests(ServiceDataCollection $proxyData): Iterator
     {
-        /* @var ServiceExecutionData $proxyData */
         foreach ($proxyData as $proxiedService) {
             yield $proxiedService->getRequest();
         }

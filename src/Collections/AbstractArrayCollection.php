@@ -19,7 +19,7 @@ abstract class AbstractArrayCollection implements Iterator, Countable
         $this->data = [];
     }
 
-    public function current()
+    public function current(): mixed
     {
         return current($this->data);
     }
@@ -29,7 +29,7 @@ abstract class AbstractArrayCollection implements Iterator, Countable
         next($this->data);
     }
 
-    public function key()
+    public function key(): string|int|null
     {
         return key($this->data);
     }

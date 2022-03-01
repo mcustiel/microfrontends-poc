@@ -8,16 +8,17 @@ use Psr\Http\Message\UriInterface;
 
 class Microservice
 {
-    /** @var ServiceId */
-    private $id;
+    private ServiceId $id;
 
-    /** @var UriInterface */
-    private $baseUrl;
+    private UriInterface $baseUrl;
 
-    public function __construct(ServiceId $id, UriInterface $baseUrl)
+    private string $urlPrefix;
+
+    public function __construct(ServiceId $id, UriInterface $baseUrl, string $urlPrefix = '')
     {
         $this->id = $id;
         $this->baseUrl = $baseUrl;
+        $this->urlPrefix = $urlPrefix;
     }
 
     public function getId(): ServiceId
@@ -28,5 +29,10 @@ class Microservice
     public function getBaseUrl(): UriInterface
     {
         return $this->baseUrl;
+    }
+
+    public function getUrlPrefix(): string
+    {
+        return $this->urlPrefix;
     }
 }

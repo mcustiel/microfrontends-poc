@@ -33,7 +33,7 @@ header('X-Custom-Test: Potato');
 ?>
 <html>
     <head>
-<!--        <link rel="stylesheet" type="text/css" href="/catalog/styles/main.css" />-->
+        <link rel="stylesheet" type="text/css" href="/styles/main.css" />
     </head>
     <body>
 
@@ -43,7 +43,7 @@ header('X-Custom-Test: Potato');
                 <div class="col-sm-4">
                 	<div class="catalog-item panel panel-primary" id="catalog-item-1">
                 		<div class="panel-body">
-                			<img src="/catalog/images/book.jpg" style="max-height: 512px" />
+                			<img src="/images/book.jpg" style="max-height: 512px" />
                 		</div>
                 		<p class="panel-footer description">This is the first item</p>
                 	</div>
@@ -51,7 +51,7 @@ header('X-Custom-Test: Potato');
             	<div class="col-sm-4">
                 	<div class="catalog-item panel panel-primary" id="catalog-item-1">
                 		<div class="panel-body">
-                			<img src="/catalog/images/book.jpg" style="max-height: 512px" />
+                			<img src="/images/book.jpg" style="max-height: 512px" />
                 		</div>
                 		<p class="panel-footer description">This is the first <?php echo $_SESSION['tomato']; ?>  item</p>
                 	</div>
@@ -59,7 +59,7 @@ header('X-Custom-Test: Potato');
             	<div class="col-sm-4">
                 	<div class="catalog-item panel panel-primary" id="catalog-item-1">
                 		<div class="panel-body">
-                			<img src="/catalog/images/book.jpg" style="max-height: 512px" />
+                			<img src="/images/book.jpg" style="max-height: 512px" />
                 		</div>
                 		<p class="panel-footer description">This is the first item</p>
                 	</div>

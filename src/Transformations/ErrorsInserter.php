@@ -20,13 +20,13 @@ final class ErrorsInserter implements Transformation
         $this->xpath = $xpath;
     }
 
-    public function apply(DOMNode $htmlSection): void
+    public function apply(DOMNode $context): void
     {
         $microFrontendError = $this->xpath->query('//section[@class="request-error"]');
 
         foreach ($microFrontendError as $errorSection) {
-            $node = $htmlSection->ownerDocument->importNode($errorSection, true);
-            $htmlSection->appendChild($node);
+            $node = $context->ownerDocument->importNode($errorSection, true);
+            $context->appendChild($node);
         }
     }
 

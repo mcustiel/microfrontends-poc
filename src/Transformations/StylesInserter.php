@@ -5,27 +5,18 @@ declare(strict_types=1);
 namespace Mcustiel\MicrofrontendsComposer\Transformations;
 
 use DOMNode;
-use DOMXPath;
 use Templado\Engine\Selector;
-use Templado\Engine\Transformation;
 use Templado\Engine\XPathSelector;
 
-final class StylesInserter implements Transformation
+final class StylesInserter extends AbstractBaseTransformation
 {
-    /** @var DOMXPath */
-    private $xpath;
-
-    public function __construct(DOMXpath $xpath)
-    {
-        $this->xpath = $xpath;
-    }
-
-    public function apply(DOMNode $htmlHead): void
+    public function apply(DOMNode $context): void
     {
         $microFrontendStyles = $this->xpath->query('//style | //link[@rel=\'stylesheet\']');
         foreach ($microFrontendStyles as $style) {
-            $node = $htmlHead->ownerDocument->importNode($style, true);
-            $htmlHead->appendChild($node);
+            $this->replaceAttribute($style);
+            $node = $context->ownerDocument->importNode($style, true);
+            $context->appendChild($node);
         }
     }
 

@@ -7,7 +7,7 @@ namespace Mcustiel\MicrofrontendsComposer;
 use Mcustiel\MicrofrontendsComposer\Collections\ServiceDataCollection;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Container;
-use Zend\Diactoros\Uri;
+use Laminas\Diactoros\Uri;
 
 class Application
 {
@@ -35,8 +35,8 @@ class Application
         $serverCollection = new ServiceDataCollection();
         $servers = $this->container->getParameter('servers');
 
-        foreach ($servers as $id => $url) {
-            $service = new Microservice(new ServiceId($id), new Uri($url));
+        foreach ($servers as $id => $config) {
+            $service = new Microservice(new ServiceId($id), new Uri($config['url']), $config['assetsPrefix']);
             $serverCollection->add(
                 new ServiceExecutionData($service, RequestModifier::getRequestForService($request, $service))
             );

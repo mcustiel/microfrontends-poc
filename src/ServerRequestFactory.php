@@ -3,7 +3,7 @@
 namespace Mcustiel\MicrofrontendsComposer;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\ServerRequestFactory as ZendRequestFactory;
+use Laminas\Diactoros\ServerRequestFactory as ZendRequestFactory;
 
 class ServerRequestFactory extends ZendRequestFactory
 {

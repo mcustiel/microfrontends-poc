@@ -3,7 +3,7 @@
 namespace Mcustiel\MicrofrontendsComposer;
 
 use RuntimeException;
-use Zend\Diactoros\Stream;
+use Laminas\Diactoros\Stream;
 
 class StringStream extends Stream
 {
