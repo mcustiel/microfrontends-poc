@@ -10,22 +10,21 @@ use Psr\Http\Message\ResponseInterface;
 
 final class CacheControlResponseHeaderProcessor
 {
-    /** @var CacheManager */
-    private $cacheManager;
+    private CacheManager $cacheManager;
 
     public function __construct(CacheManager $cacheManager)
     {
         $this->cacheManager = $cacheManager;
     }
 
-    public function process(ServiceExecutionData $proxyData, ResponseInterface $response)
+    public function process(ServiceExecutionData $proxyData): void
     {
-        $serviceResponse = $proxyData->getResponse();
+        $response = $proxyData->getResponse();
 
-        if ($serviceResponse->hasHeader('Cache-Control')) {
-            $value = $serviceResponse->getHeader('Cache-Control');
+        if ($response->hasHeader('Cache-Control')) {
+            $value = $response->getHeader('Cache-Control');
             foreach ($value as $headerValue) {
-                if (strpos($headerValue, 's-maxage') === 0) {
+                if (str_starts_with($headerValue, 's-maxage')) {
                     $this->cachePage($headerValue, $proxyData);
                 }
             }

@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user'] = ['name' => 'Potato'];
     }
 }
+header('Cache-Control: s-maxage=60');
 ?><html>
 <body>
 <section id="login-header">

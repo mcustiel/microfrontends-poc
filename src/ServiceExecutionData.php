@@ -10,12 +10,11 @@ use RuntimeException;
 
 class ServiceExecutionData
 {
-    /** @var RequestInterface */
-    private $request;
-    /** @var Microservice */
-    private $service;
-    /** @var ResponseInterface */
-    private $response;
+    private RequestInterface $request;
+
+    private Microservice $service;
+
+    private ResponseInterface $response;
 
     public function __construct(Microservice $service, RequestInterface $request)
     {

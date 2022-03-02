@@ -6,8 +6,7 @@ use Psr\Cache\CacheItemPoolInterface;
 
 class CacheManager
 {
-    /** @var CacheItemPoolInterface */
-    private $cache;
+    private CacheItemPoolInterface $cache;
 
     public function __construct(CacheItemPoolInterface $cache)
     {
@@ -24,7 +23,7 @@ class CacheManager
         return $this->cache->getItem($this->buildKey($serviceId, $urlPath))->get();
     }
 
-    public function save(string $serviceId, string $urlPath, int $ttl, string $html)
+    public function save(string $serviceId, string $urlPath, int $ttl, string $html): void
     {
         $item = $this->cache->getItem($this->buildKey($serviceId, $urlPath));
         $item->set($html);

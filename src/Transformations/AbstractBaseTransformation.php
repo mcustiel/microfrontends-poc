@@ -10,7 +10,6 @@ use Templado\Engine\Transformation;
 
 abstract class AbstractBaseTransformation implements Transformation
 {
-    /** @var DOMXPath */
     protected DOMXPath $xpath;
 
     protected string $urlPrefix;

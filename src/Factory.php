@@ -4,6 +4,9 @@ namespace Mcustiel\MicrofrontendsComposer;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use JetBrains\PhpStorm\Pure;
+use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
+use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use Mcustiel\MicrofrontendsComposer\Processors\BodyComposer;
 use Mcustiel\MicrofrontendsComposer\Processors\CacheControlResponseHeaderProcessor;
 use Mcustiel\MicrofrontendsComposer\Processors\CopyResponseHeaderPostprocessor;
@@ -16,8 +19,6 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
-use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 
 class Factory
 {
@@ -61,11 +62,13 @@ class Factory
         );
     }
 
+    #[Pure]
     public function createBodyComposer(): BodyComposer
     {
         return new BodyComposer();
     }
 
+    #[Pure]
     public function createTemplateloader(): HtmlTemplateLoader
     {
         return new HtmlTemplateLoader();
@@ -80,6 +83,7 @@ class Factory
         );
     }
 
+    #[Pure]
     public function createCopyResponseHeaderPostprocessor(): CopyResponseHeaderPostprocessor
     {
         return new CopyResponseHeaderPostprocessor();
@@ -90,11 +94,13 @@ class Factory
         return new CacheControlResponseHeaderProcessor($this->createCacheManager());
     }
 
+    #[Pure]
     public function createSetCookieResponseHeaderProcessor(): SetCookieResponseHeaderProcessor
     {
         return new SetCookieResponseHeaderProcessor();
     }
 
+    #[Pure]
     public function createResponseEmitter(): EmitterInterface
     {
         return new SapiEmitter();
@@ -104,7 +110,11 @@ class Factory
     {
         $containerBuilder = new ContainerBuilder();
         $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__ . '/../config'));
-        $loader->load('services.yml');
+        try {
+            $loader->load('services.yml');
+        } catch (\Exception $e) {
+            // @TODO handle
+        }
         $containerBuilder->compile();
         return $containerBuilder;
     }

@@ -29,7 +29,7 @@ if (strpos($_SERVER['REQUEST_URI'], '/bad-request') === 0) {
     die;
 }
 header('X-Custom-Test: Potato');
-//header('Cache-Control: s-maxage=60');
+header('Cache-Control: s-maxage=60');
 ?>
 <html>
     <head>

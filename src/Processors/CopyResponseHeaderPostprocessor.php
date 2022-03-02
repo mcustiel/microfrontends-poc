@@ -11,10 +11,22 @@ use function in_array;
 
 final class CopyResponseHeaderPostprocessor
 {
-    const IGNORED_HEADERS = [
-        'Server', 'Date', 'Content-Type', 'Transfer-Encoding',
-        'Connection', 'X-Powered-By', 'Expires', 'Pragma',
-        'Cache-Control', 'Set-Cookie', 'Content-Length'
+    private const IGNORED_HEADERS = [
+        'Server',
+        'Date',
+        'Content-Type',
+        'Transfer-Encoding',
+        'Connection',
+        'X-Powered-By',
+        'Expires',
+        'Pragma',
+        'Cache-Control',
+        'Set-Cookie',
+        'Content-Length'
+    ];
+
+    private const DEV_HEADERS = [
+        'X-Microfrontend-Error'
     ];
 
     public function process(ServiceExecutionData $serviceExecutionData, ResponseInterface $response): ResponseInterface
@@ -23,9 +35,20 @@ final class CopyResponseHeaderPostprocessor
             if (in_array($name, self::IGNORED_HEADERS, true)) {
                 continue;
             }
-            $response = $response->withHeader($name, $value);
+
+            if (!$this->isDev() && in_array($name, self::DEV_HEADERS, true)) {
+                continue;
+            }
+
+            $response = $response->withAddedHeader($name, $value);
         }
 
         return $response;
+    }
+
+    private function isDev(): bool
+    {
+        // @TODO
+        return true;
     }
 }

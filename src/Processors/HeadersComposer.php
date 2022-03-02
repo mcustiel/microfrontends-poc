@@ -9,12 +9,11 @@ use Psr\Http\Message\ResponseInterface;
 
 final class HeadersComposer
 {
-    /** @var SetCookieResponseHeaderProcessor */
-    private $setCookieHeaderProcessor;
-    /** @var CacheControlResponseHeaderProcessor */
-    private $cacheControlHeaderProcessor;
-    /** @var CopyResponseHeaderPostprocessor */
-    private $copyResponseHeaderProcessor;
+    private SetCookieResponseHeaderProcessor $setCookieHeaderProcessor;
+
+    private CacheControlResponseHeaderProcessor $cacheControlHeaderProcessor;
+
+    private CopyResponseHeaderPostprocessor $copyResponseHeaderProcessor;
 
     public function __construct(
         SetCookieResponseHeaderProcessor $setCookieHeaderProcessor,
@@ -29,9 +28,7 @@ final class HeadersComposer
     public function process(ServiceExecutionData $serviceExecutionData, ResponseInterface $response): ResponseInterface
     {
         $response = $this->setCookieHeaderProcessor->process($serviceExecutionData, $response);
-        $this->cacheControlHeaderProcessor->process($serviceExecutionData, $response);
-        $response = $this->copyResponseHeaderProcessor->process($serviceExecutionData, $response);
-
-        return $response;
+        $this->cacheControlHeaderProcessor->process($serviceExecutionData);
+        return $this->copyResponseHeaderProcessor->process($serviceExecutionData, $response);
     }
 }

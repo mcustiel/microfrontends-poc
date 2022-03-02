@@ -10,14 +10,13 @@ use Mcustiel\MicrofrontendsComposer\ServiceExecutionData;
 use Mcustiel\MicrofrontendsComposer\Transformations\ErrorsInserter;
 use Mcustiel\MicrofrontendsComposer\Transformations\ScriptsInserter;
 use Mcustiel\MicrofrontendsComposer\Transformations\SectionsReplacer;
-use Mcustiel\MicrofrontendsComposer\Transformations\AbstractBaseTransformation;
 use Mcustiel\MicrofrontendsComposer\Transformations\StylesInserter;
 use Templado\Engine\Html;
 
 final class BodyComposer
 {
     /** @var DOMXPath[] */
-    private $xPathsCache;
+    private array $xPathsCache;
 
     public function __construct()
     {
@@ -26,10 +25,9 @@ final class BodyComposer
 
     public function process(ServiceExecutionData $proxyData, Html $htmlTemplate): void
     {
-        $body = $proxyData->getResponse()->getBody()->__toString();
+        $body = (string)$proxyData->getResponse()->getBody();
         $serviceId = $proxyData->getService()->getId();
         if ($body) {
-            //var_dump([substr($body, 0, 100), $proxyData->getService()]);
             $xpath = $this->getXpathForService($serviceId->asString(), $body);
             $htmlTemplate->applyTransformation(new StylesInserter($xpath, $proxyData->getService()->getUrlPrefix()));
             $htmlTemplate->applyTransformation(new ScriptsInserter($xpath, $proxyData->getService()->getUrlPrefix()));

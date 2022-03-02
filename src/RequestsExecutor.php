@@ -6,6 +6,7 @@ namespace Mcustiel\MicrofrontendsComposer;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Pool;
 use Iterator;
 use Mcustiel\MicrofrontendsComposer\Collections\ServiceDataCollection;
@@ -59,11 +60,11 @@ class RequestsExecutor
 
     private function getFailureHandler(ServiceDataCollection $servers): callable
     {
-        return function (BadResponseException $reason, int $index) use ($servers) {
+        return function (BadResponseException|ConnectException $reason, int $index) use ($servers) {
             $serviceId = $servers->get($index)->getService()->getId();
             $response = $this->getResponseFromReasonOrDefault($reason, $serviceId);
             $response = $this->writeErrorToResponse($reason, $response);
-            $response->withAddedHeader(
+            $response = $response->withAddedHeader(
                 'X-Microfrontend-Error', [
                     sprintf(
                         'app:%s;error=%s',
@@ -83,7 +84,7 @@ class RequestsExecutor
         }
     }
 
-    private function getResponseFromReasonOrDefault(BadResponseException $reason, ServiceId $serviceId): ResponseInterface
+    private function getResponseFromReasonOrDefault(BadResponseException|ConnectException $reason, ServiceId $serviceId): ResponseInterface
     {
         $response = $reason->getResponse();
         if (!$response) {
@@ -97,7 +98,7 @@ class RequestsExecutor
     }
 
     private function writeErrorToResponse(
-        BadResponseException $reason,
+        BadResponseException|ConnectException $reason,
         ResponseInterface $response
     ): ResponseInterface {
         $statusCode = $response->getStatusCode();

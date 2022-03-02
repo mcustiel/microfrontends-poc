@@ -7,8 +7,7 @@ use Laminas\Diactoros\Response;
 
 class RequestsPreprocessor
 {
-    /** @var CacheManager */
-    private $cacheManager;
+    private CacheManager $cacheManager;
 
     public function __construct(CacheManager $cacheManager)
     {
