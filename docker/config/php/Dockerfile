@@ -14,12 +14,13 @@ RUN EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)
 
 RUN chmod +x /usr/local/bin/composer
 
-RUN pecl install apcu-5.1.21 \
-	&& docker-php-ext-enable apcu
+RUN pecl install apcu-5.1.21 xdebug && docker-php-ext-enable apcu xdebug
 
-ENV XDEBUG_PORT 9000
-ENV XDEBUG_CONFIG "remote_host=localhost remote_connect_back=1"
-ENV PHP_IDE_CONFIG "serverName=Docker"
+#ENV XDEBUG_PORT 9000
+#ENV XDEBUG_CONFIG "remote_host=localhost remote_connect_back=1"
+#ENV PHP_IDE_CONFIG "serverName=Docker"
+#ENV XDEBUG_SESSION=1
+
 
 #ARG DEBUG_IDEKEY=PHPSTORM
 #RUN pecl install xdebug-2.6.1
